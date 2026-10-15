@@ -1,0 +1,72 @@
+/* 🐾 喵喵的小茶馆 — 在 Butterfly 默认样式之上做的少量点缀（配色取自头像与横幅） */
+:root {
+  --meow-rose: #d36f8f;   /* 樱粉：头发与围裙 */
+  --meow-petal: #e899b0;
+  --meow-amber: #e8a33d;  /* 灯笼暖黄 */
+  --meow-blue: #5b8fd6;   /* 蓝眼睛 / 爱心发卡 */
+  --meow-glow: rgba(232, 153, 176, .35);
+}
+
+/* 首页大图：标题柔光 */
+#page-header #site-title,
+#page-header #site-subtitle {
+  text-shadow: 0 2px 18px rgba(70, 30, 45, .45);
+}
+#page-header.full_page::before {
+  background: linear-gradient(180deg, rgba(60, 25, 40, .05) 40%, rgba(60, 25, 40, .35));
+}
+
+/* 卡片：圆润 + 樱粉色悬浮光晕 */
+#recent-posts .recent-post-item,
+#aside-content .card-widget,
+#post, #page, #archive, #tag, #category {
+  border-radius: 14px;
+  box-shadow: 0 6px 22px rgba(211, 111, 143, .10);
+  transition: box-shadow .3s, transform .3s;
+}
+#recent-posts .recent-post-item:hover,
+#aside-content .card-widget:hover {
+  box-shadow: 0 10px 30px var(--meow-glow);
+  transform: translateY(-2px);
+}
+
+/* 头像：奶白 + 浅粉光圈 */
+#aside-content .card-info .avatar-img {
+  box-shadow: 0 0 0 4px rgba(255, 255, 255, .8), 0 0 18px var(--meow-glow);
+}
+
+/* 导航栏标题前的圆形头像 */
+#nav .site-icon { border-radius: 50%; }
+
+/* 文章内链接 */
+#article-container a { color: var(--meow-rose); }
+#article-container a:hover { color: var(--meow-blue); }
+
+/* 深色模式：茶馆夜色 */
+[data-theme="dark"] {
+  --meow-glow: rgba(232, 153, 176, .18);
+}
+[data-theme="dark"] #web_bg { background: #1a1317 !important; }
+[data-theme="dark"] #article-container a { color: #f2a7bd; }
+[data-theme="dark"] #article-container a:hover { color: #8fb6ee; }
+
+/* 公告喇叭等侧栏图标统一为灯笼暖黄 */
+#aside-content .card-announcement .item-headline i { color: var(--meow-amber); }
+
+/* 首页大图：标题放到下方，不挡住人物的脸 */
+#page-header.full_page #site-info {
+  top: auto;
+  bottom: 13%;
+  padding: 18px 28px;
+  border-radius: 18px;
+  background: rgba(70, 30, 45, .22);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  left: 50%;
+  width: auto;
+  max-width: min(720px, 92vw);
+  transform: translateX(-50%);
+}
+@media (max-width: 768px) {
+  #page-header.full_page #site-info { bottom: 10%; padding: 12px 16px; }
+}

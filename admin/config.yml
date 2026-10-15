@@ -1,0 +1,74 @@
+# 后台（Sveltia CMS）配置
+# 线上：用 GitHub 个人访问令牌（fine-grained PAT，只授权 blog-source 仓库的 Contents 读写）登录
+# 本地：./blog admin 后在 Chrome/Edge 打开 http://localhost:4000/admin/ ，选择「使用本地仓库」直接改本地文件
+backend:
+  name: github
+  repo: MiaowFisherSpeaker/blog-source
+  branch: main
+  commit_messages:
+    create: '新建 {{collection}}：{{slug}}'
+    update: '更新 {{collection}}：{{slug}}'
+    delete: '删除 {{collection}}：{{slug}}'
+    uploadMedia: '上传图片 {{path}}'
+    deleteMedia: '删除图片 {{path}}'
+
+site_url: https://blog.miaowfisherspeaker.cn
+display_url: https://blog.miaowfisherspeaker.cn
+logo_url: /img/avatar.webp
+locale: zh_Hans
+
+media_folder: source/img/uploads
+public_folder: /img/uploads
+
+# 隐私：上传的照片统一转成 webp 重新编码，会丢掉 EXIF（GPS 定位、拍摄设备等）
+media_libraries:
+  default:
+    config:
+      max_file_size: 8388608
+      slugify_filename: true
+      transformations:
+        raster_image:
+          format: webp
+          quality: 85
+          width: 2048
+          height: 2048
+
+slug:
+  encoding: unicode
+  clean_accents: false
+
+collections:
+  - name: posts
+    label: 文章
+    label_singular: 文章
+    folder: source/_posts
+    create: true
+    slug: '{{fields.slug}}'
+    summary: '{{title}} · {{date | date("YYYY-MM-DD")}}{{published | ternary("", " · 🔒未公开")}}'
+    sortable_fields: [date, title]
+    view_filters:
+      - { label: 未公开, field: published, pattern: false }
+    fields:
+      - { label: 标题, name: title, widget: string }
+      - { label: 网址名(英文/拼音，决定链接), name: slug, widget: string, required: false, hint: 留空会用标题生成 }
+      - { label: 发布时间, name: date, widget: datetime, format: 'YYYY-MM-DD HH:mm:ss' }
+      - { label: 公开, name: published, widget: boolean, default: false, hint: 关掉 = 草稿，不会出现在线上网站 }
+      - { label: 标签, name: tags, widget: list, required: false }
+      - { label: 分类, name: categories, widget: list, required: false }
+      - { label: 摘要, name: description, widget: text, required: false }
+      - { label: 封面图, name: cover, widget: image, required: false }
+      - { label: 数学公式, name: katex, widget: boolean, default: false, required: false }
+      - { label: 正文, name: body, widget: markdown }
+
+  - name: pages
+    label: 页面
+    files:
+      - name: about
+        label: 关于
+        file: source/about/index.md
+        fields:
+          - { label: 标题, name: title, widget: string }
+          - { label: 日期, name: date, widget: datetime, format: 'YYYY-MM-DD HH:mm:ss' }
+          - { label: 类型, name: type, widget: hidden, default: about }
+          - { label: 评论, name: comments, widget: hidden, default: false }
+          - { label: 正文, name: body, widget: markdown }
