@@ -1,6 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>茶馆小礼物</title>
+    <url>/2026/10/16/tea-gift/</url>
+    <content><![CDATA[<p>这是一份茶馆小礼物，请评论收下～ 🎁</p>
+<span id="more"></span>
+<h2 id="怎么领取">怎么领取</h2>
+<p>在<strong>这篇文章</strong>下面用 GitHub 账号留下一条评论（说什么都可以），就能收到一枚<strong>小猫咪</strong>徽章和属于你的<strong>客人编号</strong>。编号按收下礼物的先后顺序发放，第一位是 No.000001。</p>
+<ul>
+<li>只有在这篇文章下的评论才算，其他文章下的评论不会领到小猫咪哦。</li>
+<li>徽章不是即时到账的：掌柜每次更新茶馆时会统一送到，届时可以在 <a href="/guests/">小动物客人</a> 里找到你。</li>
+<li>拿到小猫咪之后，还可以联系掌柜申请特殊徽章（联系方式整理中，敬请期待）。</li>
+</ul>
+<p>欢迎光临，喵～ 🐾</p>
+]]></content>
+  </entry>
+  <entry>
     <title>小茶馆开张啦 🍵</title>
     <url>/2026/10/15/hello-teahouse/</url>
     <content><![CDATA[<p>旧博客只剩下生成好的 HTML，这次干脆从头开了一家新茶馆：</p>
@@ -29,20 +44,5 @@ c-10,0,-16.667,5,-20,15z M188 15 H145 v585 v1800 v585 h43z"/></svg></span></span
         <tag>博客</tag>
         <tag>Hexo</tag>
       </tags>
-  </entry>
-  <entry>
-    <title>茶馆小礼物</title>
-    <url>/2026/10/16/tea-gift/</url>
-    <content><![CDATA[<p>这是一份茶馆小礼物，请评论收下～ 🎁</p>
-<span id="more"></span>
-<h2 id="怎么领取">怎么领取</h2>
-<p>在<strong>这篇文章</strong>下面用 GitHub 账号留下一条评论（说什么都可以），就能收到一枚<strong>小猫咪</strong>徽章和属于你的<strong>客人编号</strong>。编号按收下礼物的先后顺序发放，第一位是 No.000001。</p>
-<ul>
-<li>只有在这篇文章下的评论才算，其他文章下的评论不会领到小猫咪哦。</li>
-<li>徽章不是即时到账的：掌柜每次更新茶馆时会统一送到，届时可以在 <a href="/guests/">小动物客人</a> 里找到你。</li>
-<li>拿到小猫咪之后，还可以联系掌柜申请特殊徽章（联系方式整理中，敬请期待）。</li>
-</ul>
-<p>欢迎光临，喵～ 🐾</p>
-]]></content>
   </entry>
 </search>
