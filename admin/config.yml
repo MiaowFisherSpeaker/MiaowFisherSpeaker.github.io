@@ -162,11 +162,15 @@ collections:
                   - { label: 掌柜樱花（流光 + 光晕 + 星星）, value: sakura }
               - { label: 悬停说明, name: desc, widget: string, required: false }
               - label: 获得者
+                label_singular: 获得者
                 name: holders
                 widget: list
                 required: false
-                field: { label: GitHub 用户名, name: login, widget: string }
-                hint: 按发放先后排列（拖动可调整，但已分配的编号不会变）。只能填在「茶馆小礼物」下领过小猫咪的人或你自己，否则发布时会报错。删掉某人 = 收回徽章，编号保留不复用
+                summary: '@{{fields.login}} {{fields.no}}'
+                hint: 只能填在「茶馆小礼物」下领过小猫咪的人或你自己，否则发布时会报错。删掉某人 = 收回徽章，他的编号保留，不会给别人
+                fields:
+                  - { label: GitHub 用户名, name: login, widget: string }
+                  - { label: 编号, name: no, widget: number, value_type: int, min: 0, required: false, hint: 可以按需求指定（例如 520），之后也能改；不填就自动取这枚徽章目前最大的编号 +1。同一枚徽章里编号不能重复 }
 
       - name: friends
         label: 友链
