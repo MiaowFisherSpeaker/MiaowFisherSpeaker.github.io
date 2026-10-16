@@ -70,3 +70,186 @@
 @media (max-width: 768px) {
   #page-header.full_page #site-info { bottom: 10%; padding: 12px 16px; }
 }
+
+/* 🐾 小动物客人与小猫咪徽章（scripts/guests.js 生成） */
+.fans-wall {
+  --fan-font: 'Fredoka', 'LXGW WenKai Screen', 'PingFang SC', sans-serif;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(168px, 1fr));
+  gap: 14px;
+  margin: 1.4em 0;
+  font-family: var(--fan-font);
+}
+.fan-card {
+  display: flex; flex-direction: column; align-items: center; gap: 2px;
+  padding: 16px 10px 14px;
+  border-radius: 20px;
+  background: #fffafb;
+  border: 1.5px dashed #f3cfda;
+  transition: transform .25s, box-shadow .25s, border-color .25s;
+}
+.fan-card:hover { transform: translateY(-3px); border-color: var(--meow-petal); box-shadow: 0 10px 24px var(--meow-glow); }
+.fan-card-owner { background: linear-gradient(180deg, #fff 0%, #fdeef3 100%); border-style: solid; border-color: var(--meow-petal); }
+#article-container img.fan-avatar {
+  display: block; width: 56px; height: 56px; max-width: none; margin: 0 0 8px;
+  border-radius: 50%; object-fit: cover;
+  box-shadow: 0 0 0 3px #fff, 0 0 0 5px #f6d3de;
+}
+.fan-no { font-size: 1.15rem; font-weight: 600; letter-spacing: .04em; line-height: 1.3; color: var(--meow-rose); font-variant-numeric: tabular-nums; }
+#article-container a.fan-login { font-size: .82rem; color: #9b7f89; text-decoration: none; border-bottom: 0; max-width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+#article-container a.fan-login:hover { color: var(--meow-blue); }
+.fan-since { font-size: .72rem; color: #bba2ab; }
+.fan-badges { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px 8px; margin-top: 4px; }
+.fan-badges { padding-top: 6px; }
+.fan-badges:not(.is-open) > .is-extra { display: none; }   /* 收起时隐藏排不进第一行的徽章（由 meow-guests.js 标记） */
+.fan-badges-more {
+  margin-top: 6px; padding: 0 .7em;
+  border: 1px dashed #e8cdd6; border-radius: 999px;
+  background: transparent; color: #b8949f;
+  font: 600 .72rem/1.7 'Fredoka', 'LXGW WenKai Screen', sans-serif;
+  cursor: pointer; transition: color .2s, border-color .2s, background .2s;
+}
+.fan-badges-more:hover { color: var(--meow-rose); border-color: var(--meow-petal); background: rgba(232, 153, 176, .08); }
+[data-theme="dark"] .fan-badges-more { border-color: #4a3540; color: #a88f98; }
+.fans-empty { text-align: center; color: #b39aa3; font-family: 'LXGW WenKai Screen', sans-serif; }
+
+/* 徽章：一颗长着猫耳朵的小胶囊 */
+.meow-badge {
+  --b1: #fff3f6; --b2: #ffd6e2; --fg: #c04f76; --bd: #f2a9c0;
+  position: relative; display: inline-block; margin-top: 5px;
+  font-family: 'LXGW WenKai Screen', 'PingFang SC', sans-serif;
+  cursor: default; user-select: none;
+}
+.meow-badge-body {
+  position: relative; z-index: 1; display: inline-flex; align-items: center; gap: .3em;
+  padding: .1em .85em .12em;
+  border-radius: 999px;
+  font-size: .8rem; font-weight: 700; letter-spacing: .12em; line-height: 1.75;
+  color: var(--fg);
+  background: linear-gradient(180deg, var(--b1) 0%, var(--b2) 100%);
+  border: 1.5px solid var(--bd);
+  box-shadow: inset 0 1.5px 0 rgba(255, 255, 255, .9), inset 0 -2px 0 rgba(0, 0, 0, .04), 0 3px 8px -2px var(--bd);
+  overflow: hidden;
+}
+.meow-badge-no {   /* 徽章编号 */
+  margin-left: .45em; padding-left: .45em;
+  border-left: 1px solid color-mix(in srgb, var(--fg) 30%, transparent);
+  font-family: 'Fredoka', sans-serif; font-weight: 600; font-size: .9em; letter-spacing: .03em;
+  opacity: .85; font-variant-numeric: tabular-nums;
+}
+.meow-ear {
+  position: absolute; z-index: 0; top: -5px; width: 10px; height: 9px;
+  background: var(--bd);
+  clip-path: polygon(50% 0, 100% 100%, 0 100%);
+  border-radius: 2px;
+  transition: transform .2s;
+}
+.meow-ear::after {   /* 耳朵里的粉色 */
+  content: ''; position: absolute; left: 3px; right: 3px; top: 3.5px; bottom: 0;
+  background: var(--b1); clip-path: polygon(50% 0, 100% 100%, 0 100%);
+}
+.meow-ear-l { left: 8px;  transform: rotate(-14deg); transform-origin: 50% 100%; }
+.meow-ear-r { right: 8px; transform: rotate(14deg);  transform-origin: 50% 100%; }
+.meow-badge:hover .meow-ear-l { animation: meow-twitch-l .5s ease-in-out; }
+.meow-badge:hover .meow-ear-r { animation: meow-twitch-r .5s ease-in-out .08s; }
+
+.meow-badge-pink     { --b1: #fff3f6; --b2: #ffd6e2; --fg: #c04f76; --bd: #f2a9c0; }
+.meow-badge-cream    { --b1: #fffaf0; --b2: #fbe7c4; --fg: #9c6a22; --bd: #ecc98c; }
+.meow-badge-sky      { --b1: #f2f8ff; --b2: #d6e7fd; --fg: #3a69ad; --bd: #a7c6f0; }
+.meow-badge-mint     { --b1: #f1fbf6; --b2: #d0f0e1; --fg: #2b8460; --bd: #9fd8bd; }
+.meow-badge-lavender { --b1: #f8f3ff; --b2: #e4d6fb; --fg: #7150b3; --bd: #c6b0ee; }
+.meow-badge-gold     { --b1: #fffbe6; --b2: #ffdc6e; --fg: #8f5a00; --bd: #ecb73a; }
+
+/* 低调款：给基础小猫咪用，不抢戏 */
+.meow-badge-milk  { --b1: #fcf8f4; --b2: #f3ebe2; --fg: #8c7767; --bd: #e2d4c6; }
+.meow-badge-mist  { --b1: #fafafc; --b2: #efeef3; --fg: #7f7c88; --bd: #dcdae2; }
+.meow-badge-paper { --b1: #fff;    --b2: #fff;    --fg: #a3909a; --bd: #eadde2; }
+.meow-badge-milk .meow-badge-body,
+.meow-badge-mist .meow-badge-body,
+.meow-badge-paper .meow-badge-body { font-weight: 600; box-shadow: inset 0 1px 0 rgba(255, 255, 255, .9); }
+
+/* 掌柜款 sakura：纯樱粉流光 + 呼吸光晕 + 闪烁星星（只用同一色系，保持干净） */
+.meow-badge-sakura { --b1: #ffe1ec; --bd: #e85d8f; --fg: #fff; }
+.meow-badge-sakura .meow-badge-body {
+  background: linear-gradient(115deg, #f2649a 0%, #ff8db5 30%, #ffb8d0 50%, #ff8db5 70%, #f2649a 100%);
+  background-size: 250% 100%;
+  border-color: #e85d8f;
+  text-shadow: 0 1px 2px rgba(160, 30, 80, .45);
+  animation: meow-flow 4s linear infinite, meow-glow 2.4s ease-in-out infinite;
+}
+.meow-badge-sakura .meow-ear { background: #e85d8f; }
+.meow-badge-sakura .meow-badge-no { border-left-color: rgba(255, 255, 255, .55); opacity: 1; }
+.meow-badge-sakura .meow-ear::after { background: #ffc4d8; }
+.meow-badge-sakura::after {   /* 右上角的小星星 */
+  content: '✦'; position: absolute; z-index: 2; top: -9px; right: -6px;
+  font-size: 11px; line-height: 1; color: #ffc93c;
+  text-shadow: 0 0 6px rgba(255, 201, 60, .9);
+  animation: meow-twinkle 1.8s ease-in-out infinite;
+}
+@keyframes meow-flow { to { background-position: -250% 0 } }
+@keyframes meow-glow {
+  0%, 100% { box-shadow: inset 0 1.5px 0 rgba(255, 255, 255, .6), 0 0 0 0 rgba(242, 100, 154, 0), 0 3px 8px -2px #e85d8f; }
+  50%      { box-shadow: inset 0 1.5px 0 rgba(255, 255, 255, .6), 0 0 12px 2px rgba(242, 100, 154, .45), 0 3px 8px -2px #e85d8f; }
+}
+@keyframes meow-twinkle { 0%, 100% { opacity: .35; transform: scale(.7) rotate(0) } 50% { opacity: 1; transform: scale(1.15) rotate(20deg) } }
+
+.meow-badge-gold .meow-badge-body::after {   /* 金色：一道流光 */
+  content: ''; position: absolute; inset: 0;
+  background: linear-gradient(110deg, transparent 30%, rgba(255, 255, 255, .85) 50%, transparent 70%);
+  transform: translateX(-130%);
+  animation: meow-shine 3.6s ease-in-out infinite;
+}
+@keyframes meow-twitch-l { 0%, 100% { transform: rotate(-14deg) } 40% { transform: rotate(-30deg) scaleY(.85) } }
+@keyframes meow-twitch-r { 0%, 100% { transform: rotate(14deg) }  40% { transform: rotate(30deg) scaleY(.85) } }
+@keyframes meow-shine { 0%, 60% { transform: translateX(-130%) } 90%, 100% { transform: translateX(130%) } }
+@media (prefers-reduced-motion: reduce) {
+  .meow-badge-gold .meow-badge-body::after, .meow-badge:hover .meow-ear,
+  .meow-badge-sakura .meow-badge-body, .meow-badge-sakura::after { animation: none; }
+}
+
+[data-theme="dark"] .fan-card { background: #231a1e; border-color: #4a3540; }
+[data-theme="dark"] .fan-card-owner { background: linear-gradient(180deg, #2a1e24, #33212a); border-color: #7a4c5e; }
+[data-theme="dark"] #article-container img.fan-avatar { box-shadow: 0 0 0 3px #231a1e, 0 0 0 5px #4a3540; }
+[data-theme="dark"] .fan-no { color: #f2a7bd; }
+[data-theme="dark"] #article-container a.fan-login { color: #c9b3bb; }
+[data-theme="dark"] .meow-badge { filter: saturate(.92) brightness(.9); }
+
+
+/* 🍵 友链（scripts/guests.js 的 {% friendlinks %} 生成） */
+.friend-links {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 14px;
+  margin: 1.4em 0;
+  font-family: 'LXGW WenKai Screen', 'PingFang SC', sans-serif;
+}
+#article-container a.friend-card {
+  display: flex; align-items: center; gap: 14px;
+  padding: 14px 16px;
+  border-radius: 18px;
+  background: #fffafb;
+  border: 1.5px dashed #f3cfda;
+  color: inherit; text-decoration: none;
+  transition: transform .25s, box-shadow .25s, border-color .25s;
+}
+#article-container a.friend-card:hover { transform: translateY(-3px); border-color: var(--meow-petal); box-shadow: 0 10px 24px var(--meow-glow); }
+#article-container img.friend-avatar, .friend-avatar {
+  flex: none; display: block; width: 52px; height: 52px; max-width: none; margin: 0;
+  border-radius: 50%; object-fit: cover;
+  box-shadow: 0 0 0 3px #fff, 0 0 0 5px #f6d3de;
+}
+.friend-avatar-text {
+  display: grid; place-items: center;
+  background: linear-gradient(135deg, #ffe3ec, #fdf1df);
+  color: var(--meow-rose); font: 600 1.3rem/1 'Fredoka', 'LXGW WenKai Screen', sans-serif;
+}
+.friend-info { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+.friend-name { font-weight: 700; font-size: 1rem; color: #6d4f5a; }
+#article-container a.friend-card:hover .friend-name { color: var(--meow-rose); }
+.friend-desc { font-size: .78rem; color: #a8919a; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.friend-badges { margin-top: 4px; }
+
+[data-theme="dark"] #article-container a.friend-card { background: #231a1e; border-color: #4a3540; }
+[data-theme="dark"] .friend-avatar { box-shadow: 0 0 0 3px #231a1e, 0 0 0 5px #4a3540; }
+[data-theme="dark"] .friend-name { color: #e9d3db; }
+[data-theme="dark"] .friend-desc { color: #a8919a; }

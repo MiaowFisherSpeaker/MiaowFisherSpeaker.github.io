@@ -72,3 +72,119 @@ collections:
           - { label: 类型, name: type, widget: hidden, default: about }
           - { label: 评论, name: comments, widget: hidden, default: false }
           - { label: 正文, name: body, widget: markdown }
+
+  # 茶馆：客人徽章与友链（数据在 source/_data/，由 scripts/guests.js 渲染，tools/fans-sync.mjs 校验）
+  # 注意：后台保存会重写整个 YAML 文件，文件里的注释会被清掉，说明都写在下面的 hint 里
+  - name: teahouse
+    label: 茶馆
+    editor: { preview: false }
+    files:
+      - name: badges
+        label: 徽章
+        file: source/_data/badges.yml
+        fields:
+          - label: 小礼物文章路径
+            name: gift_post
+            widget: string
+            hint: 只有在这篇文章下的评论才能领小猫咪（= 文章网址去掉开头的 /）。文章发布后请不要再改，否则已有评论会对不上
+          - label: 防小号天数
+            name: min_account_age_days
+            widget: number
+            value_type: int
+            min: 0
+            default: 30
+            hint: GitHub 账号注册满这么多天后，评论才会领到小猫咪（不是在本站待多久）。0 = 不限制
+          - label: 基础小猫咪（每位客人都有）
+            name: common
+            widget: object
+            fields:
+              - { label: 徽章文字, name: text, widget: string }
+              - label: 配色
+                name: style
+                widget: select
+                options:
+                  - { label: 奶茶（低调）, value: milk }
+                  - { label: 雾灰（低调）, value: mist }
+                  - { label: 素纸（低调）, value: paper }
+                  - { label: 樱粉, value: pink }
+                  - { label: 奶油, value: cream }
+                  - { label: 天蓝, value: sky }
+                  - { label: 薄荷, value: mint }
+                  - { label: 薰衣草, value: lavender }
+                  - { label: 金色（流光）, value: gold }
+                  - { label: 掌柜樱花（流光 + 光晕 + 星星）, value: sakura }
+          - label: 掌柜专属徽章（只有你有）
+            name: owner
+            widget: object
+            fields:
+              - { label: 徽章文字, name: text, widget: string }
+              - label: 配色
+                name: style
+                widget: select
+                options:
+                  - { label: 奶茶（低调）, value: milk }
+                  - { label: 雾灰（低调）, value: mist }
+                  - { label: 素纸（低调）, value: paper }
+                  - { label: 樱粉, value: pink }
+                  - { label: 奶油, value: cream }
+                  - { label: 天蓝, value: sky }
+                  - { label: 薄荷, value: mint }
+                  - { label: 薰衣草, value: lavender }
+                  - { label: 金色（流光）, value: gold }
+                  - { label: 掌柜樱花（流光 + 光晕 + 星星）, value: sakura }
+              - { label: 悬停说明, name: desc, widget: string, required: false }
+          - label: 特殊徽章
+            label_singular: 特殊徽章
+            name: custom
+            widget: list
+            summary: '{{fields.text}} · {{fields.id}}'
+            hint: 由你手动发放，可以和小猫咪同时拥有。每种徽章单独编号（No.001、No.002…），保存后要运行 ./blog publish 才会分配编号并上线
+            fields:
+              - label: 代号
+                name: id
+                widget: string
+                pattern: ['^[a-z0-9-]+$', '只能用小写英文、数字和连字符']
+                hint: 英文短名，例如 golden-kitten。定好后不要再改，编号记录靠它
+              - { label: 徽章文字, name: text, widget: string }
+              - label: 配色
+                name: style
+                widget: select
+                options:
+                  - { label: 奶茶（低调）, value: milk }
+                  - { label: 雾灰（低调）, value: mist }
+                  - { label: 素纸（低调）, value: paper }
+                  - { label: 樱粉, value: pink }
+                  - { label: 奶油, value: cream }
+                  - { label: 天蓝, value: sky }
+                  - { label: 薄荷, value: mint }
+                  - { label: 薰衣草, value: lavender }
+                  - { label: 金色（流光）, value: gold }
+                  - { label: 掌柜樱花（流光 + 光晕 + 星星）, value: sakura }
+              - { label: 悬停说明, name: desc, widget: string, required: false }
+              - label: 获得者
+                name: holders
+                widget: list
+                required: false
+                field: { label: GitHub 用户名, name: login, widget: string }
+                hint: 按发放先后排列（拖动可调整，但已分配的编号不会变）。只能填在「茶馆小礼物」下领过小猫咪的人或你自己，否则发布时会报错。删掉某人 = 收回徽章，编号保留不复用
+
+      - name: friends
+        label: 友链
+        file: source/_data/friends.yml
+        fields:
+          - label: 友链
+            label_singular: 友链
+            name: links
+            widget: list
+            required: false
+            summary: '{{fields.name}} · {{fields.url}}'
+            hint: 对方的 GitHub 领过小猫咪的，按客人编号排在前面；没有的按这里的顺序排在后面
+            fields:
+              - { label: 站名, name: name, widget: string }
+              - label: 网址
+                name: url
+                widget: string
+                pattern: ['^https?://', '必须以 http:// 或 https:// 开头']
+              - { label: 一句话介绍, name: desc, widget: string, required: false }
+              - { label: 头像, name: avatar, widget: image, required: false, hint: 可上传图片或填图片网址；不填且有 GitHub 用户名时用 GitHub 头像 }
+              - { label: GitHub 用户名, name: github, widget: string, required: false, hint: 用来匹配小猫咪编号 }

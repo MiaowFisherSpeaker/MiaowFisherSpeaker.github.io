@@ -2,6 +2,33 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://blog.miaowfisherspeaker.cn/2026/10/16/tea-gift/</loc>
+    
+    <lastmod>2026-10-16</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.miaowfisherspeaker.cn/guests/index.html</loc>
+    
+    <lastmod>2026-10-16</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.miaowfisherspeaker.cn/friends/index.html</loc>
+    
+    <lastmod>2026-10-16</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://blog.miaowfisherspeaker.cn/about/index.html</loc>
     
     <lastmod>2026-10-15</lastmod>
