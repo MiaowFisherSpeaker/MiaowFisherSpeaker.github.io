@@ -253,3 +253,7 @@
 [data-theme="dark"] .friend-avatar { box-shadow: 0 0 0 3px #231a1e, 0 0 0 5px #4a3540; }
 [data-theme="dark"] .friend-name { color: #e9d3db; }
 [data-theme="dark"] .friend-desc { color: #a8919a; }
+
+/* 正文字号：霞鹜文楷字形偏小，只放大文章正文；导航、侧栏仍用全站 14px。标题和 KaTeX 公式按 em 跟着缩放 */
+#article-container { font-size: 17px; line-height: 1.9; }
+@media (max-width: 768px) { #article-container { font-size: 16px; } }
