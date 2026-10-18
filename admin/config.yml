@@ -42,6 +42,9 @@ collections:
     label: 文章
     label_singular: 文章
     folder: source/_posts
+    # 图片跟 Hexo 的 post_asset_folder 一致：存到 source/_posts/<文件名>/，正文里只写文件名 ![](xxx.png)
+    media_folder: '{{filename}}'
+    public_folder: ''
     create: true
     slug: '{{fields.slug}}'
     summary: '{{title}} · {{date | date("YYYY-MM-DD")}}{{published | ternary("", " · 🔒未公开")}}'
@@ -58,7 +61,8 @@ collections:
       - { label: 摘要, name: description, widget: text, required: false }
       - { label: 封面图, name: cover, widget: image, required: false }
       - { label: 数学公式, name: katex, widget: boolean, default: false, required: false }
-      - { label: 正文, name: body, widget: markdown }
+      # 默认源码模式：富文本模式保存时会吃掉公式里的 \, \{ _ 等转义，改坏 LaTeX
+      - { label: 正文, name: body, widget: markdown, modes: [raw, rich_text] }
 
   - name: pages
     label: 页面
