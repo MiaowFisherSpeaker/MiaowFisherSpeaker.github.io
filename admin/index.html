@@ -11,5 +11,9 @@
 <body>
   <!-- Sveltia CMS：纯前端后台，所有改动都以 git commit 的形式写进私有源码仓库 -->
   <script src="https://unpkg.com/@sveltia/cms@0.227.0/dist/sveltia-cms.js"></script>
+  <!-- 文章预览支持公式：和网站一样用 markdown-it + KaTeX（见 preview.js） -->
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.19.0/dist/katex.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/markdown-it@14.1.0/dist/markdown-it.min.js"></script>
+  <script src="/admin/preview.js"></script>
 </body>
 </html>
