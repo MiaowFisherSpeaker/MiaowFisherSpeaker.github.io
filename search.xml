@@ -31,6 +31,98 @@ c-10,0,-16.667,5,-20,15z M188 15 H145 v585 v1800 v585 h43z"/></svg></span></span
       </tags>
   </entry>
   <entry>
+    <title>MeowNotebook：把 cc 对话变成会渲染公式的本地笔记本</title>
+    <url>/2026/10/25/meownotebook/</url>
+    <content><![CDATA[<blockquote>
+<p>每天在终端里和 cc（命令行 AI 编程助手）聊论文、推公式、写代码，聊完回头一看：公式是一串串 <code>$\frac{\partial L}{\partial \theta}$</code>，好不容易问明白的东西散落在几十个会话里，想找上周那段推导只能靠记忆。于是我做了 <strong>MeowNotebook</strong> —— 一个把 cc 对话变成<strong>本地笔记本网站</strong>的小工具。</p>
+</blockquote>
+<span id="more"></span>
+<p>仓库地址：<strong><a href="https://github.com/MiaowFisherSpeaker/MeowNotebook">MiaowFisherSpeaker/MeowNotebook</a></strong>，欢迎来玩、来提 issue、顺手点个 ⭐ 喵～</p>
+<h2 id="它能做什么">它能做什么</h2>
+<p>一句话：<strong>所有 cc 会话自动出现在一个网页里，按「问 → 答」排好，公式渲染好；网页底部就是那个 cc 的真实终端，可以直接接着聊。</strong></p>
+<h3 id="📖-公式终于能看了">📖 公式终于能看了</h3>
+<p>终端里的这一行：</p>
+<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">$$J(\theta)=\mathbb&#123;E&#125;_&#123;\tau\sim\pi_\theta&#125;\Big[\sum_&#123;t=0&#125;^&#123;T&#125;\gamma^t r_t\Big]$$</span><br></pre></td></tr></table></figure>
+<p>在 MeowNotebook 里是这样的：</p>
+<p><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>J</mi><mo stretchy="false">(</mo><mi>θ</mi><mo stretchy="false">)</mo><mo>=</mo><msub><mi mathvariant="double-struck">E</mi><mrow><mi>τ</mi><mo>∼</mo><msub><mi>π</mi><mi>θ</mi></msub></mrow></msub><mo fence="false" stretchy="true" minsize="1.8em" maxsize="1.8em">[</mo><munderover><mo>∑</mo><mrow><mi>t</mi><mo>=</mo><mn>0</mn></mrow><mi>T</mi></munderover><msup><mi>γ</mi><mi>t</mi></msup><msub><mi>r</mi><mi>t</mi></msub><mo fence="false" stretchy="true" minsize="1.8em" maxsize="1.8em">]</mo></mrow><annotation encoding="application/x-tex">J(\theta)=\mathbb{E}_{\tau\sim\pi_\theta}\Big[\sum_{t=0}^{T}\gamma^t r_t\Big]
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.0962em;">J</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.0278em;">θ</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:3.0954em;vertical-align:-1.2671em;"></span><span class="mord"><span class="mord mathbb">E</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.1132em;">τ</span><span class="mrel mtight">∼</span><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.0359em;">π</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3448em;"><span style="top:-2.3488em;margin-left:-0.0359em;margin-right:0.0714em;"><span class="pstrut" style="height:2.5em;"></span><span class="katex-sizing reset-size3 size1 mtight"><span class="mord mathnormal mtight" style="margin-right:0.0278em;">θ</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.1512em;"><span></span></span></span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2559em;"><span></span></span></span></span></span></span><span class="mord"><span class="delimsizing size2">[</span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mop op-limits"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.8283em;"><span style="top:-1.8829em;margin-left:0em;"><span class="pstrut" style="height:3.05em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">t</span><span class="mrel mtight">=</span><span class="mord mtight">0</span></span></span></span><span style="top:-3.05em;"><span class="pstrut" style="height:3.05em;"></span><span><span class="mop op-symbol large-op">∑</span></span></span><span style="top:-4.3em;margin-left:0em;"><span class="pstrut" style="height:3.05em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.1389em;">T</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.2671em;"><span></span></span></span></span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.0556em;">γ</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8436em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">t</span></span></span></span></span></span></span></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.0278em;">r</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2806em;"><span style="top:-2.55em;margin-left:-0.0278em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">t</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord"><span class="delimsizing size2">]</span></span></span></span></span></span></p>
+<p>会话按目录分组放在侧栏，每一轮问答清清楚楚；中间那些过程文字和工具调用默认折叠，想看再展开。KaTeX、代码高亮、Markdown 表格全都本地渲染，<strong>断网也能用</strong>。</p>
+<h3 id="✎-整理版：一键把对话变成笔记">✎ 整理版：一键把对话变成笔记</h3>
+<p>在 cc 里敲一句 <code>/qa-notes</code>，它会把这次对话整理成结构化的笔记：去掉来回试错的过程，公式统一成 LaTeX，网页上切到「整理版」就能看。历史会话也能整理，网页上有现成的「复制 /qa-notes 命令」按钮。</p>
+<h3 id="✦-总结：这周我都学了些什么？">✦ 总结：这周我都学了些什么？</h3>
+<p>侧栏「✦ 总结」里写一句要求，比如「只要论文相关的」或者「我开发 MeowNotebook 的进展」，选一天或一段时间，cc 就会把这期间的问答读一遍，写成一份带来源的总结。写周报、复盘学习进度都很顺手。</p>
+<h3 id="★-收藏、🔍-搜索、📋-复制为-Markdown">★ 收藏、🔍 搜索、📋 复制为 Markdown</h3>
+<ul>
+<li><strong>收藏</strong>：每个问题右上角一颗 ☆，存的是快照，原始记录删了也还在。</li>
+<li><strong>搜索</strong>：标题 / 提问 / 全文三种范围，多个关键词同时命中才算，点结果直接跳到那一轮并高亮。</li>
+<li><strong>复制为 Markdown</strong>：选中一段，右键「复制为 Markdown」，公式、表格、代码块都还原成源码，直接贴进自己的笔记。</li>
+<li><strong>问题地图</strong>：问答左边一排小横条，鼠标移上去浮出附近几问，长对话里也不会迷路。</li>
+</ul>
+<h3 id="💻-网页底部就是真终端">💻 网页底部就是真终端</h3>
+<p>这是我自己最喜欢的部分。<code>cc</code> 会把会话放进专门的 tmux 里，网页底部连的是<strong>同一个</strong>会话：两边画面、输入完全同步，只转发终端字节，<strong>不额外消耗 token</strong>。</p>
+<ul>
+<li>关网页、断 SSH、合上电脑，cc 都在后台继续跑；回来 <code>cca</code> 或者打开网页就能接上。</li>
+<li>网络不好时敲的键不会丢：每次输入都等服务器确认，断线重连后自动补发，也不会重复。</li>
+<li>终端里 <code>/resume</code>、<code>/clear</code> 换了会话，网页会自动跟过去。</li>
+<li>侧栏还有个只读的「文件」浏览器，Markdown（含公式）、代码、图片、PDF 都能预览；对话里出现的文件路径可以直接点开并定位到行。</li>
+</ul>
+<h3 id="🐧-彩蛋：在-QQ-里和-cc-聊天（可选）">🐧 彩蛋：在 QQ 里和 cc 聊天（可选）</h3>
+<p>配置一个 QQ 官方机器人，就能在 QQ 私聊里直接问 cc。QQ 里的对话也是普通的 cc 会话，侧栏会标上「QQ」，回到电脑前可以在网页上接着聊；整理版和总结也能「发送到 QQ」。配置过程甚至可以让 cc 自己带你做完。</p>
+<h2 id="三步上手">三步上手</h2>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://github.com/MiaowFisherSpeaker/MeowNotebook.git ~/projects/MeowNotebook</span><br><span class="line"><span class="built_in">cd</span> ~/projects/MeowNotebook &amp;&amp; ./install.sh</span><br><span class="line"><span class="comment"># 新开一个终端，然后：</span></span><br><span class="line">cc</span><br></pre></td></tr></table></figure>
+<p>依赖只有 <strong>Python ≥ 3.8、tmux 和 cc 命令行</strong>。后端只用 Python 标准库，前端是原生 JS，第三方库全部放在仓库里，不需要 <code>pip install</code>，也不需要 <code>npm install</code>。</p>
+<p>打开 <a href="http://localhost:8765">http://localhost:8765</a> 就能看到网站。在远程服务器上用的话，<code>ssh -L 8765:localhost:8765 你的服务器</code> 转发一下即可。</p>
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>cc</code></td>
+<td>在当前目录开一个新会话，网站自动启动</td>
+</tr>
+<tr>
+<td><code>ccr</code></td>
+<td>列出当前目录的历史会话，选一个继续</td>
+</tr>
+<tr>
+<td><code>ccls</code></td>
+<td>看看哪些会话正在运行</td>
+</tr>
+<tr>
+<td><code>cca [名字]</code></td>
+<td>回到某个会话</td>
+</tr>
+<tr>
+<td><code>ccweb</code></td>
+<td>只启动网站</td>
+</tr>
+</tbody>
+</table>
+<h2 id="隐私与安全">隐私与安全</h2>
+<ul>
+<li><strong>所有数据只在本机</strong>：会话记录只读不改，整理稿、总结、收藏都存在仓库的 <code>data/</code> 里（不进 git）。</li>
+<li>网站<strong>只监听 127.0.0.1</strong>，WebSocket / POST 要求同源并只认 localhost 主机名，防止别的网页或 DNS rebinding 连上你的终端。</li>
+<li>⚠️ 需要知道的一点：<code>cc</code> 以 bypass 模式运行，网站本质上是一个<strong>免密的终端</strong>。只在信任的目录里用，<strong>千万不要把 8765 端口暴露到公网</strong>。</li>
+</ul>
+<h2 id="写在最后">写在最后</h2>
+<p>MeowNotebook 一开始只是想「把公式看清楚」，用着用着就长出了整理、总结、搜索、网页终端、QQ 机器人……它现在是我每天学习和写代码的主力工具。</p>
+<p>如果你也常和命令行 AI 助手聊数学、聊论文，希望它也能帮到你。遇到问题或者有想要的功能，欢迎到 <a href="https://github.com/MiaowFisherSpeaker/MeowNotebook/issues">Issues</a> 留言～ 🐾</p>
+<p><small>注：MeowNotebook 是个人工具，与任何厂商无关。</small></p>
+]]></content>
+      <categories>
+        <category>小工具</category>
+      </categories>
+      <tags>
+        <tag>MeowNotebook</tag>
+        <tag>工具</tag>
+        <tag>开源</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>JEPA 编年史：从 2022 年的世界模型蓝图到 2026 年的 H-JEPA</title>
     <url>/2026/10/18/jepa-chronicle/</url>
     <content><![CDATA[<blockquote>
@@ -627,6 +719,21 @@ c-10,0,-16.667,5,-20,15z M410 15 H367 v585 v0 v585 h43z"/></svg></span></span></
       </tags>
   </entry>
   <entry>
+    <title>茶馆小礼物</title>
+    <url>/2026/10/16/tea-gift/</url>
+    <content><![CDATA[<p>这是一份茶馆小礼物，请评论收下～ 🎁</p>
+<span id="more"></span>
+<h2 id="怎么领取">怎么领取</h2>
+<p>在<strong>这篇文章</strong>下面用 GitHub 账号留下一条评论（说什么都可以），就能收到一枚<strong>小猫咪</strong>徽章和属于你的<strong>客人编号</strong>。编号按收下礼物的先后顺序发放，第一位是 No.000001。</p>
+<ul>
+<li>只有在这篇文章下的评论才算，其他文章下的评论不会领到小猫咪哦。</li>
+<li>徽章不是即时到账的：掌柜每次更新茶馆时会统一送到，届时可以在 <a href="/guests/">小动物客人</a> 里找到你。</li>
+<li>拿到小猫咪之后，还可以联系掌柜申请特殊徽章（联系方式整理中，敬请期待）。</li>
+</ul>
+<p>欢迎光临，喵～ 🐾</p>
+]]></content>
+  </entry>
+  <entry>
     <title>强化学习易混淆概念梳理</title>
     <url>/2026/10/21/rl-confusing-terms/</url>
     <content><![CDATA[<blockquote>
@@ -940,20 +1047,5 @@ c-10,0,-16.667,5,-20,15z M410 15 H367 v585 v0 v585 h43z"/></svg></span></span></
         <tag>时间尺度</tag>
         <tag>概念</tag>
       </tags>
-  </entry>
-  <entry>
-    <title>茶馆小礼物</title>
-    <url>/2026/10/16/tea-gift/</url>
-    <content><![CDATA[<p>这是一份茶馆小礼物，请评论收下～ 🎁</p>
-<span id="more"></span>
-<h2 id="怎么领取">怎么领取</h2>
-<p>在<strong>这篇文章</strong>下面用 GitHub 账号留下一条评论（说什么都可以），就能收到一枚<strong>小猫咪</strong>徽章和属于你的<strong>客人编号</strong>。编号按收下礼物的先后顺序发放，第一位是 No.000001。</p>
-<ul>
-<li>只有在这篇文章下的评论才算，其他文章下的评论不会领到小猫咪哦。</li>
-<li>徽章不是即时到账的：掌柜每次更新茶馆时会统一送到，届时可以在 <a href="/guests/">小动物客人</a> 里找到你。</li>
-<li>拿到小猫咪之后，还可以联系掌柜申请特殊徽章（联系方式整理中，敬请期待）。</li>
-</ul>
-<p>欢迎光临，喵～ 🐾</p>
-]]></content>
   </entry>
 </search>
